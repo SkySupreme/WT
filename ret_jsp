@@ -1,0 +1,25 @@
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Retrieve Data</title>
+</head>
+<body>
+    <h2>Student Data</h2>
+    <%
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vamshi", "root", "root");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM student");
+            while (rs.next()) {
+                out.println("ID: " + rs.getInt("roll") + ", Name: " + rs.getString("name") + "<br>");
+            }
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    %>
+</body>
+</html>
