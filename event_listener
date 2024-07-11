@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Listener and Range Check</title>
+    <script>
+        var clickCount = 0;
+
+        function incrementCount() {
+            clickCount++;
+            console.log("Button clicked " + clickCount + " times.");
+        }
+
+        function changeText() {
+            document.getElementById("changeText").innerHTML = "Hello World!";
+        }
+
+        function checkRange(num1, num2) {
+            return (num1 >= 50 && num1 <= 99) || (num2 >= 50 && num2 <= 99);
+        }
+
+        function checkRangeHandler() {
+            var num1 = parseInt(document.getElementById("num1").value);
+            var num2 = parseInt(document.getElementById("num2").value);
+            alert(checkRange(num1, num2));
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById("clickButton").addEventListener("click", incrementCount);
+            document.getElementById("changeButton").addEventListener("click", changeText);
+            document.getElementById("rangeButton").addEventListener("click", checkRangeHandler);
+        });
+    </script>
+</head>
+<body>
+    <button id="clickButton">Click me</button>
+    <div id="changeText">Change me</div>
+    <button id="changeButton">Change Text</button><br><br>
+    <input type="text" id="num1" placeholder="Enter first number">
+    <input type="text" id="num2" placeholder="Enter second number">
+    <button id="rangeButton">Check Range</button>
+</body>
+</html>
